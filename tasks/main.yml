@@ -1,0 +1,14 @@
+---
+- name: Include OS family specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+
+- include_tasks: redis_pre.yml
+- include_tasks: redis_install.yml
+
+- block: # Config Redis
+  - include_tasks: redis_search_config.yml
+  - include_tasks: redis_post.yml
+  tags:
+    - redis-config

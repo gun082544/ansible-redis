@@ -1,0 +1,4 @@
+---
+- name: Add Redis PPA
+  apt_repository:
+    repo: "{{ redis_ppa }}"

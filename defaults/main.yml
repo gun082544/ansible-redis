@@ -1,0 +1,9 @@
+---
+redis_search_config_path: "{{ playbook_dir }}/files/groups/{{ item }}/redis"
+redis_search_config_paths: []
+
+redis_host_config_file_path: "{{ redis_host_config_path | default(inventory_hostname) }}/redis.conf.j2"
+redis_config_file_path: /etc/redis/redis.conf
+redis_config_path: /etc/redis
+
+redis_apt_package: redis-server

@@ -1,0 +1,10 @@
+---
+- name: Copy Redis configuration file
+  template:
+    src: "{{ redis_host_config_file_path }}"
+    dest: "{{ redis_config_file_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: redis_config_check.stat.exists
+  notify: Restart Redis
