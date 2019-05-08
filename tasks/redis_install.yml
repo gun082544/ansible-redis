@@ -4,3 +4,8 @@
     name: "{{ redis_apt_package }}"
     state: present
     update_cache: yes
+
+- name: Enable service Redis, and not touch the state
+  service:
+    name: "{{ redis_service_name }}"
+    enabled: yes
