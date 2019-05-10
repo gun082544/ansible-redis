@@ -7,3 +7,5 @@ redis_config_file_path: /etc/redis/redis.conf
 redis_config_path: /etc/redis
 
 redis_apt_package: redis-server
+
+redis_service_name: redis-server
