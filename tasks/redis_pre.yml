@@ -1,4 +1,4 @@
 ---
 - name: Add Redis PPA
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ redis_ppa }}"

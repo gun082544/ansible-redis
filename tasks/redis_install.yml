@@ -1,11 +1,11 @@
 ---
 - name: Install Redis
-  apt:
+  ansible.builtin.apt:
     name: "{{ redis_apt_package }}"
     state: present
     update_cache: yes
 
 - name: Enable service Redis, and not touch the state
-  service:
+  ansible.builtin.service:
     name: "{{ redis_service_name }}"
     enabled: yes

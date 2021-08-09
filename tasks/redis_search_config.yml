@@ -1,11 +1,11 @@
 ---
 - name: Set list of path to look for local Redis configuration directory
-  set_fact:
+  ansible.builtin.set_fact:
     redis_search_config_paths: "{{ redis_search_config_paths }} + [ '{{ redis_search_config_path }}' ]"
   with_items: "{{ group_names }}"
 
 - name: Check if Redis configuration directory exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ item }}"
   register: redis_config_check
   become: false
@@ -15,7 +15,7 @@
       skip: true
 
 - name: Set Redis configuration directory
-  set_fact:
+  ansible.builtin.set_fact:
     redis_host_config_path: "{{ redis_config_check.results[0].stat.path }}"
   when:
     - redis_config_check.results[0] is defined
@@ -23,7 +23,7 @@
     - redis_config_check.results[0].stat.isdir
 
 - name: Check if Redis template configuration file is exists
-  stat:
+  ansible.builtin.stat:
     path: "{{ redis_host_config_file_path }}"
   become: false
   delegate_to: 127.0.0.1
